@@ -1,0 +1,63 @@
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": "01JMYPGVEGWG8J9MBSYJS3GEY6",
+      "name": "Combination Pliers",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra felis nec pellentesque feugiat. Donec faucibus arcu maximus, convallis nisl eu, placerat dolor. Morbi finibus neque nec tincidunt pharetra. Sed eget tortor malesuada, mollis enim id, condimentum nisi. In viverra quam at bibendum ultricies. Aliquam quis eros ex. Etiam at pretium massa, ut pharetra tortor. Sed vel metus sem. Suspendisse ac molestie turpis. Duis luctus justo massa, faucibus ornare eros elementum et. Vestibulum quis nisl vitae ante dapibus tempor auctor ut leo. Mauris consectetur et magna at ultricies. Proin a aliquet turpis.",
+      "price": 14.15,
+      "is_location_offer": false,
+      "is_rental": false,
+      "in_stock": true,
+      "product_image": {
+        "id": "01JMYPGVE3AGT8GFB5N33S5846",
+        "by_name": "Helinton Fantin",
+        "by_url": "https://unsplash.com/@fantin",
+        "source_name": "Unsplash",
+        "source_url": "https://unsplash.com/photos/W8BNwvOvW4M",
+        "file_name": "pliers01.avif",
+        "title": "Combination pliers"
+      },
+      "category": {
+        "id": "01JMYPGVDTZQQM3Y41XF4QSRSV",
+        "name": "Pliers",
+        "slug": "pliers",
+        "parent_id": "01JMYPGVDH4M1RDPBJ871JX12S"
+      },
+      "brand": {
+        "id": "01JMYPGVCW0CZV4SFFFNDQ5F58",
+        "name": "ForgeFlex Tools",
+        "slug": "forgeflex-tools"
+      }
+    },
+    {
+        "id": "01JMYPGVF1JXBTJB826GFAEMVX",
+        "name": "Thor Hammer",
+        "description": "Donec malesuada tempus purus. Integer sit amet arcu magna. Sed vel laoreet ligula, non sollicitudin ex. Mauris euismod ac dolor venenatis lobortis. Aliquam iaculis at diam nec accumsan. Ut sodales sed elit et imperdiet. Maecenas vitae molestie mauris. Integer quis placerat libero, in finibus diam. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+        "price": 11.14,
+        "is_location_offer": false,
+        "is_rental": false,
+        "in_stock": true,
+        "product_image": {
+            "id": "01JMYPGVE3AGT8GFB5N33S584E",
+            "by_name": "ANIRUDH",
+            "by_url": "https:\/\/unsplash.com\/@lanirudhreddy",
+            "source_name": "Unsplash",
+            "source_url": "https:\/\/unsplash.com\/photos\/3esjG-nlgyk",
+            "file_name": "hammer04.avif",
+            "title": "Hammer"
+        },
+        "category": {
+            "id": "01JMYPGVDTZQQM3Y41XF4QSRSQ",
+            "name": "Hammer",
+            "slug": "hammer",
+            "parent_id": "01JMYPGVDH4M1RDPBJ871JX12S"
+        },
+        "brand": {
+            "id": "01JMYPGVCW0CZV4SFFFNDQ5F58",
+            "name": "ForgeFlex Tools",
+            "slug": "forgeflex-tools"
+        }
+    }
+  ]
+}
