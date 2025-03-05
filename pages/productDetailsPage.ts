@@ -1,8 +1,8 @@
 import { Page, expect, Locator } from '@playwright/test';
 
-export class HomePage {
+export class ProductDetailsPage {
     readonly page: Page;
-    readonly linkHome: any;
+    readonly btnAddToCart: any;
     readonly txtSearch: any;
     readonly btnSearch: any;
     readonly lblProductName: any;
@@ -11,7 +11,7 @@ export class HomePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.linkHome = page.getByTestId("nav-home");
+        this.btnAddToCart = page.getByTestId("add-to-cart");
         this.txtSearch = page.getByTestId("search-query");
         this.btnSearch = page.getByTestId("search-submit");
         this.locatorProductCard = page.locator(`//a[@class='card']`);
@@ -19,9 +19,9 @@ export class HomePage {
         this.locatorNoResults = page.getByTestId(`no-results`);
     }
 
-    async clickHome() {
-        await this.linkHome.click();
-        await expect.soft(this.locatorProductCard.locator('nth=0')).toBeVisible();
+    async addItemToCart() {
+        await this.btnAddToCart.click();
+        await expect.soft(this.page.getByLabel('Product added to shopping')).toBeVisible();
     };
 
     async SearchProduct(productName: string) {
@@ -40,6 +40,5 @@ export class HomePage {
 
     async selectProduct(){
         await this.locatorProductCard.locator('nth=0').click();
-        await this.page.waitForURL(/\/product\/[A-Z0-9]+$/);
     }
 }

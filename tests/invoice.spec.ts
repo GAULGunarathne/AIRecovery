@@ -1,4 +1,4 @@
-import { test, request, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import * as cartPayloadData from '../test-data/req-json/cartPayload.json';
 import path from 'path';
 import fs from 'fs/promises';

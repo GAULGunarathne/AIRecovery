@@ -2,7 +2,6 @@ import { Page, expect, Locator } from '@playwright/test';
 
 export class LoginPage {
     readonly page: Page;
-    readonly linkSignIn: any;
     readonly formLogin: any;
     readonly txtEmail: any;
     readonly txtPassword: any;
@@ -11,21 +10,19 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.linkSignIn = page.getByTestId('nav-sign-in');
-        this.formLogin = page.getByTestId('login-form');
-        this.txtEmail = page.getByTestId('email');
-        this.txtPassword = page.getByTestId('password');
-        this.btnLogin = page.getByTestId('login-submit');
-        this.titleLocator = page.getByTestId('page-title');
+        this.formLogin = page.getByText('Login Sign in with Google or');
+        this.txtEmail = page.locator('[data-test="email"]');
+        this.txtPassword = page.locator('[data-test="password"]');
+        this.btnLogin = page.locator('[data-test="login-submit"]');
+        this.titleLocator = page.locator('[data-test="page-title"]');
     }
-    
+
     async goto() {
         await this.page.goto("/auth/login");
     }
 
     async Login(username, password) {
-        await this.linkSignIn.click();
-        await expect(this.formLogin, `Verify loading the login page`).toBeVisible();
+        await expect.soft(this.formLogin).toBeVisible();
         await this.txtEmail.fill(username);
         await this.txtPassword.fill(password);
         await this.btnLogin.click();
