@@ -1,5 +1,6 @@
 import { test } from '../../pages/fixtures';
 import { runAccessibilityCheck } from '../../utils/accessibilityChecker';
+const ENABLE_ACCESSIBILITY_CHECKS = process.env.ENABLE_ACCESSIBILITY_CHECKS === 'true';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
@@ -8,26 +9,25 @@ test.describe('Smoke Test Suite', () => {
     test('Check out flow verification', async ({ page, loginPage, homePage, productDetailsPage }, testInfo) => {
 
         await loginPage.goto();
-        try {
+        if (ENABLE_ACCESSIBILITY_CHECKS) {
             await runAccessibilityCheck(page, testInfo, 'login-page');
-        } catch (error) {
         }
 
         await loginPage.Login(process.env.CUSTOMER_01_USERNAME, process.env.CUSTOMER_01_PASSWORD);
         await homePage.clickHome();
-        try {
+
+        if (ENABLE_ACCESSIBILITY_CHECKS) {
             await runAccessibilityCheck(page, testInfo, 'home-page');
-        } catch (error) {
         }
 
         await homePage.selectProduct();
-        try {
+
+        if (ENABLE_ACCESSIBILITY_CHECKS) {
             await runAccessibilityCheck(page, testInfo, 'product-details-page');
-        } catch (error) {
         }
 
         await productDetailsPage.addItemToCart();
 
-        // Smoke Test Code to be added here
+        // Smoke Test code to be enhanced here
     });
 });
