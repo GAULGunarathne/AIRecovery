@@ -15,7 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.13.8"
+    "@types/node": "^22.13.8",
+    "axe-html-reporter": "^2.2.11"
   },
   "dependencies": {
     "@artilleryio/playwright-reporter": "^1.1.3",

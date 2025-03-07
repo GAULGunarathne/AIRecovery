@@ -24,8 +24,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html'],
-    ['blob'], // required for Artillery's reporter to work
-    ['@artilleryio/playwright-reporter', { name: 'artillert-report' }],
+    // ['blob'], // required for Artillery's reporter to work
+    // ['@artilleryio/playwright-reporter', { name: 'artillert-report' }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 120000,
@@ -33,6 +33,9 @@ export default defineConfig({
     timeout: 10000
   },
   use: {
+    launchOptions: {
+      slowMo: 2000
+    },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     testIdAttribute: 'data-test',
