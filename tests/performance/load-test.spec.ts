@@ -1,4 +1,4 @@
-import { LoginPage } from '../pages/loginPage';
+import { LoginPage } from '../../pages/loginPage';
 
 export const config = {
   target: 'https://practicesoftwaretesting.com/auth/login',

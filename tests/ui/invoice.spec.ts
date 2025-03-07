@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import * as cartPayloadData from '../test-data/req-json/cartPayload.json';
+import * as cartPayloadData from '../../test-data/req-json/cartPayload.json';
 import path from 'path';
 import fs from 'fs/promises';
 let token, cartId, product_price, invoice_id, invoice_number;

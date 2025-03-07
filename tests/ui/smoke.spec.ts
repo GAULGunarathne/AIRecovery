@@ -1,5 +1,5 @@
-import { test } from '../pages/fixtures';
-import { runAccessibilityCheck } from '../utils/accessibilityChecker';
+import { test } from '../../pages/fixtures';
+import { runAccessibilityCheck } from '../../utils/accessibilityChecker';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
