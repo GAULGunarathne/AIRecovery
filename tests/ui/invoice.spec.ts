@@ -10,6 +10,7 @@ test.describe('Example Test Suite', () => {
     test.use({ storageState: { cookies: [], origins: [] } });
 
     test.beforeEach(async ({ request }) => {
+        
         await test.step('Log in', async () => {
             const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
                 {
