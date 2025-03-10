@@ -45,7 +45,7 @@ test.describe('Example Test Suite', () => {
 
             //Saving product details into cartPayload.json
             cartPayload.product_id = product_id;
-            const filePath = path.join(__dirname, "../test-data/req-json", "cartPayload.json");
+            const filePath = path.join(__dirname, "../../test-data/req-json", "cartPayload.json");
             const existingData = await fs.readFile(filePath, 'utf-8');
             const existingPayload = JSON.parse(existingData);
             existingPayload.product_id = product_id;
