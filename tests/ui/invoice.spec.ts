@@ -10,7 +10,7 @@ test.describe('Example Test Suite', () => {
     test.use({ storageState: { cookies: [], origins: [] } });
 
     test.beforeEach(async ({ request }) => {
-        
+
         await test.step('Log in', async () => {
             const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
                 {
@@ -136,6 +136,5 @@ test.describe('Example Test Suite', () => {
         }, token);
         await page.goto(`${process.env.UI_URL}/account/invoices/${invoice_id}`);
         await expect.soft(page.getByTestId('invoice-number')).toHaveValue(`${invoice_number}`);
-        await page.waitForTimeout(5000);
     });
 });
