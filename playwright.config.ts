@@ -34,7 +34,7 @@ export default defineConfig({
   },
   use: {
     launchOptions: {
-      slowMo: 2000
+      slowMo: 1500
     },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
@@ -59,7 +59,6 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: '.auth/customer01.json',
         permissions: ["clipboard-read"]
       },
       dependencies: ["setup"]

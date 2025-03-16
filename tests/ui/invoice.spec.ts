@@ -10,6 +10,7 @@ test.describe('Example Test Suite', () => {
     test.use({ storageState: { cookies: [], origins: [] } });
 
     test.beforeEach(async ({ request }) => {
+
         await test.step('Log in', async () => {
             const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
                 {
@@ -45,7 +46,7 @@ test.describe('Example Test Suite', () => {
 
             //Saving product details into cartPayload.json
             cartPayload.product_id = product_id;
-            const filePath = path.join(__dirname, "../test-data/req-json", "cartPayload.json");
+            const filePath = path.join(__dirname, "../../test-data/req-json", "cartPayload.json");
             const existingData = await fs.readFile(filePath, 'utf-8');
             const existingPayload = JSON.parse(existingData);
             existingPayload.product_id = product_id;
@@ -135,6 +136,5 @@ test.describe('Example Test Suite', () => {
         }, token);
         await page.goto(`${process.env.UI_URL}/account/invoices/${invoice_id}`);
         await expect.soft(page.getByTestId('invoice-number')).toHaveValue(`${invoice_number}`);
-        await page.pause();
     });
 });

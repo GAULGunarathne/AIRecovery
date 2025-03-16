@@ -8,7 +8,7 @@ test.describe('Smoke Test Suite', () => {
 
     test('Check out flow verification', async ({ page, loginPage, homePage, productDetailsPage }, testInfo) => {
 
-        await loginPage.goto();
+        await loginPage.loadLoginPage();
         if (ENABLE_ACCESSIBILITY_CHECKS) {
             await runAccessibilityCheck(page, testInfo, 'login-page');
         }
