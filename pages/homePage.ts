@@ -11,11 +11,11 @@ export class HomePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.linkHome = page.getByTestId("nav-home");
-        this.txtSearch = page.getByTestId("search-query");
-        this.btnSearch = page.getByTestId("search-submit");
+        this.linkHome = page.locator('[data-test="nav-home"]');
+        this.txtSearch = page.locator('[data-test="search-query"]');
+        this.btnSearch = page.locator('[data-test="search-submit"]');
         this.locatorProductCard = page.locator(`//a[@class='card']`);
-        this.lblProductName = page.getByTestId("product-name");
+        this.lblProductName = page.locator('[data-test="product-name"]');
         this.locatorNoResults = page.getByTestId(`no-results`);
     }
 
