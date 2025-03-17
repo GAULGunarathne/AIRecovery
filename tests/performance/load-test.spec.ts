@@ -14,7 +14,7 @@ export const config = {
   engines: {
     playwright: {
       launchOptions: {
-        headless: false
+        headless: true
       }
     }
   }
