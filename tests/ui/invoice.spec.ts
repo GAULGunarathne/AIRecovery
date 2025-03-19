@@ -9,6 +9,21 @@ let cartPayload = { ...cartPayloadData };
 test.describe('Example Test Suite', () => {
 
     test.beforeEach(async ({ request }) => {
+        
+        await test.step('Log in', async () => {
+            const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
+                {
+                    data: {
+                        email: `${process.env.CUSTOMER_02_USERNAME}`,
+                        password: `${process.env.CUSTOMER_02_PASSWORD}`
+                    }
+                }
+            )
+            expect(loginResponse.status()).toBe(200);
+            const loginResponseJson = await loginResponse.json();
+            token = loginResponseJson.access_token;
+            console.log("##########################\n" + token + "\n##########################");
+        });
 
         await test.step('Get product id', async () => {
             const productDetailsResponse = await request.get(`${process.env.API_URL}/products?between=price,1,100&page=1`)
