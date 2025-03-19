@@ -8,8 +8,8 @@ setup("Create customer 01 auth via API", async ({ request }) => {
   const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
     {
       data: {
-        email: `${process.env.CUSTOMER_01_USERNAME}`,
-        password: `${process.env.CUSTOMER_01_PASSWORD}`
+        email: `${process.env.CUSTOMER_02_USERNAME}`,
+        password: `${process.env.CUSTOMER_02_PASSWORD}`
       }
     }
   )

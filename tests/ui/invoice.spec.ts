@@ -11,30 +11,9 @@ test.describe('Example Test Suite', () => {
 
     test.beforeEach(async ({ request }) => {
 
-        await test.step('Log in', async () => {
-            const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
-                {
-                    data: {
-                        email: `${process.env.CUSTOMER_02_USERNAME}`,
-                        password: `${process.env.CUSTOMER_02_PASSWORD}`
-                    }
-                }
-            )
-            expect(loginResponse.status()).toBe(200);
-            const loginResponseJson = await loginResponse.json();
-            token = loginResponseJson.access_token;
-            console.log("##########################\n" + token + "\n##########################");
-        });
-
         await test.step('Get product id', async () => {
-            const productDetailsResponse = await request.get(`${process.env.API_URL}/products?between=price,1,100&page=1`,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            )
+            const productDetailsResponse = await request.get(`${process.env.API_URL}/products?between=price,1,100&page=1`)
+
             expect(productDetailsResponse.status()).toBe(200);
             const productDetailsResponseJson = await productDetailsResponse.json();
             const product_name = productDetailsResponseJson.data[0].name;
@@ -54,14 +33,7 @@ test.describe('Example Test Suite', () => {
         });
 
         await test.step('Create cart id', async () => {
-            const creatCartResponse = await request.post(`${process.env.API_URL}/carts`,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            )
+            const creatCartResponse = await request.post(`${process.env.API_URL}/carts`)
             expect(creatCartResponse.status()).toBe(201);
             const creatCartResponseJson = await creatCartResponse.json();
             cartId = creatCartResponseJson.id;
@@ -87,12 +59,11 @@ test.describe('Example Test Suite', () => {
         await test.step('Check-out', async () => {
             const checkoutResponse = await request.post(`${process.env.API_URL}/payment/check`,
                 {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
                     data: {
-                        payment_method: "cash-on-delivery"
+                        payment_method: "buy-now-pay-later",
+                        payment_details: {
+                            monthly_installments: "3"
+                        }
                     }
                 }
             )
@@ -105,18 +76,17 @@ test.describe('Example Test Suite', () => {
         await test.step('Generate invoice', async () => {
             const invoiceResponse = await request.post(`${process.env.API_URL}/invoices`,
                 {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
                     data: {
                         billing_street: "Rosenwag Road",
                         billing_city: "Berlin",
                         billing_state: "Western",
                         billing_country: "Germany",
                         billing_postal_code: "120990",
-                        payment_method: "cash-on-delivery",
-                        cart_id: `${cartId}`
+                        cart_id: `${cartId}`,
+                        payment_method: "buy-now-pay-later",
+                        payment_details: {
+                            monthly_installments: "3"
+                        }
                     }
                 }
             )
@@ -131,9 +101,10 @@ test.describe('Example Test Suite', () => {
     });
 
     test('Verify invoice details', async ({ page }) => {
-        page.addInitScript(value => {
-            window.localStorage.setItem('auth-token', value);
-        }, token);
+        await page.addInitScript(token => {
+            window.localStorage.setItem('auth-token', token);
+        }, process.env.ACCESS_TOKEN);
+        console.log("\n" + "##########################\n" + 'invoice_id : ' + invoice_id);
         await page.goto(`${process.env.UI_URL}/account/invoices/${invoice_id}`);
         await expect.soft(page.getByTestId('invoice-number')).toHaveValue(`${invoice_number}`);
     });
