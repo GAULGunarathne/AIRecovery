@@ -65,7 +65,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         permissions: ["clipboard-read"]
       },
-      dependencies: ["setup"]
+      //dependencies: ["setup"]
     }
 
     // {
