@@ -1,1 +1,35 @@
-{"cookies":[{"name":"_ga","value":"GA1.1.961356062.1739467420","domain":".practicesoftwaretesting.com","path":"/","expires":1774027430.226655,"httpOnly":false,"secure":false,"sameSite":"Lax"},{"name":"_ga_0BJFXRKTYC","value":"GS1.1.1739467420.1.1.1739467430.0.0.0","domain":".practicesoftwaretesting.com","path":"/","expires":1774027430.253731,"httpOnly":false,"secure":false,"sameSite":"Lax"}],"origins":[{"origin":"https://practicesoftwaretesting.com","localStorage":[{"name":"auth-token","value":""}]}]}
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.961356062.1739467420",
+      "domain": ".practicesoftwaretesting.com",
+      "path": "/",
+      "expires": 1774027430.226655,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_0BJFXRKTYC",
+      "value": "GS1.1.1739467420.1.1.1739467430.0.0.0",
+      "domain": ".practicesoftwaretesting.com",
+      "path": "/",
+      "expires": 1774027430.253731,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://practicesoftwaretesting.com",
+      "localStorage": [
+        {
+          "name": "auth-token",
+          "value": ""
+        }
+      ]
+    }
+  ]
+}
