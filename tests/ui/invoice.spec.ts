@@ -90,6 +90,7 @@ test.describe('Example Test Suite', () => {
         await test.step('Generate invoice', async () => {
             const invoiceResponse = await request.post(`${process.env.API_URL}/invoices`,
                 {
+                    headers: { 'Authorization': `Bearer ${token}` },
                     data: {
                         billing_street: "Rosenwag Road",
                         billing_city: "Berlin",
