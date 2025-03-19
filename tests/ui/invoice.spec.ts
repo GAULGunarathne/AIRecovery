@@ -9,7 +9,7 @@ let cartPayload = { ...cartPayloadData };
 test.describe('Example Test Suite', () => {
 
     test.beforeEach(async ({ request }) => {
-        
+
         await test.step('Log in', async () => {
             const loginResponse = await request.post(`${process.env.API_URL}/users/login`,
                 {
@@ -115,9 +115,9 @@ test.describe('Example Test Suite', () => {
     });
 
     test('Verify invoice details', async ({ page }) => {
-        await page.addInitScript(token => {
-            window.localStorage.setItem('auth-token', token);
-        }, process.env.ACCESS_TOKEN);
+        await page.addInitScript(value => {
+            window.localStorage.setItem('auth-token', value);
+        }, token);
         console.log("\n" + "##########################\n" + 'invoice_id : ' + invoice_id);
         await page.goto(`${process.env.UI_URL}/account/invoices/${invoice_id}`);
         await expect.soft(page.getByTestId('invoice-number')).toHaveValue(`${invoice_number}`);
