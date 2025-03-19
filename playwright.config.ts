@@ -46,7 +46,11 @@ export default defineConfig({
     ignoreHTTPSErrors: true,
     video: 'retain-on-failure',
     screenshot: 'on-first-failure',
-    headless: false
+    headless: false,
+
+    extraHTTPHeaders: {
+      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
+    }
   },
 
   /* Configure projects for major browsers */

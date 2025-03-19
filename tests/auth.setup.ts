@@ -19,4 +19,6 @@ setup("Create customer 01 auth via API", async ({ request }) => {
   user.origins[0].localStorage[0].value = token;
   fs.writeFileSync(customer01AuthFile, JSON.stringify(user));
 
+  process.env['ACCESS_TOKEN'] = token;
+
 });
