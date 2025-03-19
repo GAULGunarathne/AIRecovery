@@ -7,7 +7,6 @@ let token, cartId, product_price, invoice_id, invoice_number;
 let cartPayload = { ...cartPayloadData };
 
 test.describe('Example Test Suite', () => {
-    test.use({ storageState: { cookies: [], origins: [] } });
 
     test.beforeEach(async ({ request }) => {
 
