@@ -1,3 +1,5 @@
+
+
 import { LoginPage } from '../../pages/loginPage';
 import { HomePage } from '../../pages/homePage';
 
@@ -5,8 +7,7 @@ export const config = {
   target: 'https://practicesoftwaretesting.com/auth/login',
   phases: [
     {
-      name: 'constantArrivalRate',
-      //2 users will arrive every second for 3 seconds
+      name: 'constantArrivalRate', //2 users will arrive every second for 3 seconds
       arrivalRate: 2,
       duration: 3
     }
@@ -44,5 +45,6 @@ async function pageLoadAndLogin(page, vuContext, events, test) {
     await homePage.SearchProduct("Thor Hammer");
     await homePage.assertValidSearchResult("Thor Hammer");
   });
-
 }
+
+

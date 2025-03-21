@@ -48,9 +48,9 @@ export default defineConfig({
     screenshot: 'on-first-failure',
     headless: false,
 
-    extraHTTPHeaders: {
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
-    }
+    // extraHTTPHeaders: {
+    //   'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
+    // }
   },
 
   /* Configure projects for major browsers */
@@ -65,7 +65,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         permissions: ["clipboard-read"]
       },
-      dependencies: ["setup"]
+      //dependencies: ["setup"]
     }
 
     // {
