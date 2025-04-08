@@ -2,8 +2,27 @@ import { chromium, Page } from 'playwright';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import * as testData from '../fikahq/test.data.json';
+import testDataJson from './test.data.json';
 import * as templateData from './script_template.json';
+
+type TestDataType = {
+  [key: string]: string;
+  first_name: string;
+  last_name: string;
+  dob: string;
+  street: string;
+  postal_code: string;
+  city: string;
+  state: string;
+  phone: string;
+  email: string;
+  country: string;
+  password: string;
+  adusername: string;
+  adpassword: string;
+};
+
+const testData = testDataJson as TestDataType;
 
 dotenv.config();
 
@@ -12,7 +31,9 @@ function normalizeFieldName(fieldName: string): string {
 }
 
 async function main() {
-  const browser = await chromium.launch({ headless: true }); 
+  const browser = await chromium.launch({ headless: true
+  // executablePath: 'C:\\Users\\UvinGunarathna\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1161\\chrome-win\\headless_shell.exe'
+  });
   const page: Page = await browser.newPage();
 
   try {
@@ -79,7 +100,7 @@ async function main() {
     generatedCode += templateData.testFooter + '\n';
 
     // Save the generated script to a file
-    const generatedScriptPath = path.join(__dirname, '../fikahq/tests/automated_script.spec.ts');
+    const generatedScriptPath = path.join(__dirname, './tests/automated_script.spec.ts');
     await fs.writeFile(generatedScriptPath, generatedCode);
     console.log('Automated Script Generated > automated_script.spec.ts');
 

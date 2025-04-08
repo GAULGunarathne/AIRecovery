@@ -8,7 +8,8 @@
     "test:chromium": "npx playwright test --project chromium",
     "test:first": "npx playwright test --grep smoke",
     "test:report": "npx playwright test && npx playwright show-report",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --ui",
+    "generate": "tsx tests/script_generator.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,10 @@
   "devDependencies": {
     "@playwright/test": "^1.49.1",
     "@types/node": "^22.13.8",
-    "axe-html-reporter": "^2.2.11"
+    "axe-html-reporter": "^2.2.11",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@artilleryio/playwright-reporter": "^1.1.3",
