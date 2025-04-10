@@ -1,12 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import path from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+// ES module workaround for __dirname
+const _filename = fileURLToPath(import.meta.url);
+const _dirname = dirname(_filename);
 
+// Load the environment variables
+dotenv.config({ path: path.resolve(_dirname, '.env') });
 
 export default defineConfig({
   testDir: './tests',
@@ -21,11 +24,11 @@ export default defineConfig({
   ],
   timeout: 120000,
   expect: {
-    timeout: 10000
+    timeout: 10000,
   },
   use: {
     launchOptions: {
-      slowMo: 1500
+      slowMo: 1500,
     },
     baseURL: `${process.env.UI_URL}`,
     testIdAttribute: 'data-test',
@@ -41,24 +44,16 @@ export default defineConfig({
   },
   projects: [
     {
-      name: "setup",
+      name: 'setup',
       testMatch: /.*\.setup\.ts/,
     },
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        permissions: ["clipboard-read"]
+        permissions: ['clipboard-read'],
       },
-      // dependencies: ["setup"]
-    }
-    // Uncomment for additional browser targets:
-    // { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    // { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-    // { name: 'Mobile Chrome', use: { ...devices['Pixel 5'] } },
-    // { name: 'Mobile Safari', use: { ...devices['iPhone 12'] } },
-    // { name: 'Microsoft Edge', use: { ...devices['Desktop Edge'], channel: 'msedge' } },
-    // { name: 'Google Chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    },
   ],
   // webServer: {
   //   command: 'npm run start',

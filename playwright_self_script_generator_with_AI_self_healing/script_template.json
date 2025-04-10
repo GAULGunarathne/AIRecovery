@@ -1,12 +1,12 @@
 {
-  "imports": "import { chromium, Page } from 'playwright';\nimport { test, expect } from '@playwright/test';\nimport { clickWithAIRecovery, fillWithAIRecovery } from '../ai-recovery';",
+  "imports": "import { test, expect } from '@playwright/test';\nimport { clickWithAIRecovery, fillWithAIRecovery } from '../ai-recovery';",
   "testHeader": "test('generated test', async ({ page }) => {",
-  "browserLaunch": "  const browser = await chromium.launch();\n  try {",
+  "browserLaunch": "",
   "gotoUrl": "    await page.goto('{{url}}');",
-  "interactionsStart": "    // Generated Automation Tests:",
+  "interactionsStart": "  // Generated Automation Tests with AI recovery:",
   "fillInput": "    await fillWithAIRecovery(page, '{{selector}}', '{{value}}');",
   "selectOption": "    await fillWithAIRecovery(page, '{{selector}}', '{{value}}');",
   "submitButton": "    await clickWithAIRecovery(page, 'button:has-text(\"Login\"), button:has-text(\"Submit\"), button:has-text(\"Register\")');",
-  "catchBlock": "  } catch (error) {\n    console.error('Test failed:', error);\n    throw error;\n  } finally {\n    await browser.close();\n  }",
-  "testFooter": "});"
+  "catchBlock": "",
+  "testFooter": "  // Add assertions if needed to verify that the registration or login was successful\n  // For example, checking if the user was redirected to the home page after submission\n  await expect(page).toHaveURL('https://practicesoftwaretesting.com/');\n});"
 }
