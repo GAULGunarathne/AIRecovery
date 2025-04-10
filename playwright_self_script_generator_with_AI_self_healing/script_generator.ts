@@ -25,6 +25,7 @@ type TestDataType = {
 const testData = testDataJson as TestDataType;
 
 dotenv.config();
+console.log("FSIGNUP URL:", process.env.FSIGNUP);
 
 function normalizeFieldName(fieldName: string): string {
   return fieldName.toLowerCase().replace(/\s+/g, '_');
@@ -37,7 +38,12 @@ async function main() {
   const page: Page = await browser.newPage();
 
   try {
-    const url: string = process.env.FSIGNUP || '';
+    const url = process.env.FSIGNUP;
+
+    if (!url) {
+      throw new Error('FSIGNUP environment variable is not set.');
+    }
+
     console.log(`Navigating to: ${url}`);
     await page.goto(url);
 

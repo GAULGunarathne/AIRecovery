@@ -1,2 +1,4 @@
-Use - 'npx tsx script_generator.ts' to generate the Script
-    - 'npx playwright test automated_script.spec.ts' to run the script
+### How to Run ###
+
+$env:FSIGNUP="https://practicesoftwaretesting.com/auth/register"
+npx ts-node playwright_self_script_generator_with_AI_self_healing/script_generator.ts
