@@ -1,28 +1,12 @@
-import { chromium, Page } from 'playwright';
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import * as dotenv from 'dotenv';
-import testDataJson from './test.data.json';
-import * as templateData from './script_template.json';
+const { chromium } = require('playwright');
+const fs = require('fs/promises');
+const path = require('path');
+const dotenv = require('dotenv');
+const testDataJson = require('./test.data.json');
+const templateData = require('./script_template.json');
 
-type TestDataType = {
-  [key: string]: string;
-  first_name: string;
-  last_name: string;
-  dob: string;
-  street: string;
-  postal_code: string;
-  city: string;
-  state: string;
-  phone: string;
-  email: string;
-  country: string;
-  password: string;
-  adusername: string;
-  adpassword: string;
-};
-
-const testData = testDataJson as TestDataType;
+// Define the structure of the test data manually for type safety
+const testData = testDataJson;
 
 dotenv.config();
 console.log("FSIGNUP URL:", process.env.FSIGNUP);
@@ -32,10 +16,8 @@ function normalizeFieldName(fieldName: string): string {
 }
 
 async function main() {
-  const browser = await chromium.launch({ headless: true
-  // executablePath: 'C:\\Users\\UvinGunarathna\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1161\\chrome-win\\headless_shell.exe'
-  });
-  const page: Page = await browser.newPage();
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
 
   try {
     const url = process.env.FSIGNUP;
@@ -50,7 +32,7 @@ async function main() {
     const inputs = await page.$$('input, select');
     console.log(`Found ${inputs.length} input/select elements.`);
 
-    let generatedCode: string = '';
+    let generatedCode = '';
     generatedCode += templateData.imports + '\n';
     generatedCode += templateData.testHeader + '\n';
     generatedCode += templateData.browserLaunch + '\n';
@@ -59,14 +41,14 @@ async function main() {
 
     // Loop through all input/select elements
     for (const input of inputs) {
-      const tagName = await input.evaluate((el) => el.tagName.toLowerCase());
+      const tagName = await input.evaluate((el: Element) => el.tagName.toLowerCase()); // Type 'el' as Element
       const id = await input.getAttribute('id');
       const name = await input.getAttribute('name');
       const placeholder = await input.getAttribute('placeholder');
       const label = await page.$(`label[for="${id}"]`);
 
       // Determine the field name based on available attributes
-      let fieldName: string = '';
+      let fieldName: string = ''; // Declare 'fieldName' as string
       if (id) {
         fieldName = normalizeFieldName(id);
       } else if (name) {
@@ -82,7 +64,7 @@ async function main() {
       }
       const fieldValue = testData[fieldName] || '';
 
-      let selector: string = '';
+      let selector: string = ''; // Declare 'selector' as string
       if (id) {
         selector = `#${id}`;
       } else if (name) {
@@ -93,7 +75,6 @@ async function main() {
         selector = `input[id="${await label.getAttribute('for')}"]`;
       }
 
-      // Generate code based on element type
       if (tagName === 'input') {
         generatedCode += templateData.fillInput.replace('{{selector}}', selector).replace('{{value}}', fieldValue) + '\n';
       } else if (tagName === 'select') {

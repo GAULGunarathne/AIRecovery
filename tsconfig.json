@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ES2020",  // Set this to ES2020 or higher
+    "target": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "strict": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "./dist"
   },
   "include": [
-    "playwright_self_script_generator_with_AI_self_healing/**/*"
-  ]
+    "src/**/*.ts",
+    "playwright_self_script_generator_with_AI_self_healing/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

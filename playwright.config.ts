@@ -5,8 +5,7 @@ import { dirname } from 'path';
 import path from 'path';
 
 // ES module workaround for __dirname
-const _filename = fileURLToPath(import.meta.url);
-const _dirname = dirname(_filename);
+const _dirname = __dirname; 
 
 // Load the environment variables
 dotenv.config({ path: path.resolve(_dirname, '.env') });

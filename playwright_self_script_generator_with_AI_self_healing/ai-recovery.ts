@@ -23,8 +23,8 @@ interface OpenRouterResponse {
 async function getAlternativeLocator(page: Page, brokenLocator: string) {
   try {
     // Extract only relevant elements to reduce token usage
-    const pageContent = await page.locator('input, button').evaluateAll(nodes => 
-      nodes.map(n => n.outerHTML).join('\n')
+    const pageContent = await page.locator('input, button').evaluateAll((nodes: Element[]) => 
+      nodes.map(n => (n as HTMLElement).outerHTML).join('\n')
     );    
 
     // AI Prompt
