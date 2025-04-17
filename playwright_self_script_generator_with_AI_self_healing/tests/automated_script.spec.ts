@@ -8,7 +8,7 @@ test('generated test', async ({ page }) => {
     await fillWithAIRecovery(page, '#first_name', 'James');
     await fillWithAIRecovery(page, '#last_name', 'Anderson');
     await fillWithAIRecovery(page, '#dob', '2000-01-01');
-    await fillWithAIRecovery(page, '#street', '1234 Main St');
+    await fillWithAIRecovery(page, '#street', '123 Main St');
     await fillWithAIRecovery(page, '#postal_code', '12345');
     await fillWithAIRecovery(page, '#city', 'Colombo');
     await fillWithAIRecovery(page, '#state', 'CA');

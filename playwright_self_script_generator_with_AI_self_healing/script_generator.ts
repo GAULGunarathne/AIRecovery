@@ -4,11 +4,13 @@ const path = require('path');
 const dotenv = require('dotenv');
 const testDataJson = require('./test.data.json');
 const templateData = require('./script_template.json');
+const dotenvPath = path.resolve(__dirname, './.env'); // this is correct for same-folder .env
+console.log("Loading .env from:", dotenvPath);
+dotenv.config({ path: dotenvPath });
 
 // Define the structure of the test data manually for type safety
 const testData = testDataJson;
 
-dotenv.config();
 console.log("FSIGNUP URL:", process.env.FSIGNUP);
 
 function normalizeFieldName(fieldName: string): string {
