@@ -9,14 +9,15 @@
     "test:first": "npx playwright test --grep smoke",
     "test:report": "npx playwright test && npx playwright show-report",
     "test:ui": "npx playwright test --ui",
-    "generate": "tsx tests/script_generator.ts"
+    "generate": "tsx tests/script_generator.ts",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.49.1",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.14.0",
     "axe-html-reporter": "^2.2.11",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
@@ -25,8 +26,10 @@
   "dependencies": {
     "@artilleryio/playwright-reporter": "^1.1.3",
     "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.51.1",
     "axios": "^1.8.4",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.5.0",
+    "playwright": "^1.51.1"
   },
-  "type": "module"
+  "type": "commonjs"
 }

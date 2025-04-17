@@ -5,11 +5,19 @@ import { dirname } from 'path';
 import path from 'path';
 
 // ES module workaround for __dirname
-const _filename = fileURLToPath(import.meta.url);
-const _dirname = dirname(_filename);
+const _dirname = __dirname; 
 
 // Load the environment variables
-dotenv.config({ path: path.resolve(_dirname, '.env') });
+const dotenvPath = path.resolve(__dirname, '../../.env'); // 2 levels up from script_generator.ts
+dotenv.config({ path: dotenvPath });
+
+
+console.log("Loading .env from:", dotenvPath);
+console.log("FSIGNUP:", process.env.FSIGNUP);
+
+
+
+
 
 export default defineConfig({
   testDir: './tests',
